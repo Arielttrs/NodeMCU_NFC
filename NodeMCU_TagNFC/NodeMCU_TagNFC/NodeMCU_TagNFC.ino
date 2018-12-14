@@ -1,4 +1,4 @@
-/*
+﻿/*
  Name:		NodeMCU_TagNFC.ino
  Created:	13/12/2018 21:35:46
  Author:	Ariel
@@ -23,9 +23,9 @@ HardwareSerial &Pc = Serial;            // Para Debugg
 SoftwareSerial Node(4, 5); //Rx || Tx   // Puerto serie para node mcu 
 PN532_I2C pn532_i2c(Wire);
 NfcAdapter nfc = NfcAdapter(pn532_i2c); // Pasa el argumento "interface (i2c o spi)" a la clase NfcAdapter. 
-LiquidCrystal_I2C lcd(0x3F, 16, 2);     // Entrega los argumentos: direcci?n y dimensiones a la funcion lcd.
+LiquidCrystal_I2C lcd(0x3F, 16, 2);     // Entrega los argumentos: direcci�n y dimensiones a la funcion lcd.
 
-										// Configuraci?n: 
+										// Configuración:
 void setup(void) {
 
 	//int ok;  // Varriable axuliaar para chequar estado. 
