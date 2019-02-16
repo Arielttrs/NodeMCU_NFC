@@ -30,12 +30,12 @@ void setup(void) {
 
 	//int ok;  // Varriable axuliaar para chequar estado. 
 
-	Pc.begin(115200);
-	MCU.begin(9600);
-	lcd.init();
+	Pc.begin(115200);       // Debugg
+	MCU.begin(9600);        // Puerto Virtual
+	lcd.init();             // Monitor LCD
 
 	my_lcd("Iniciando", 0, 0, false);
-	delay(1000);
+	delay(500);
 
 	// Iniciar Modulo NFC: 
 	nfc.begin();            // Solicitar version del firmware al modulo
@@ -86,14 +86,14 @@ void read_ndef() {
 		my_lcd(uiid, 0, 1, false);         // Mostrar UID en pantalla. 
 
 		/*Enviar Datos a NodeMCU*/
-		MCU.print(uiid);                   // Envia UID a Node MCU
-		MCU.print("\n");
+		MCU.print(uiid);                   // Envia UID . 
+		MCU.print("\n");                   // Indicador de fin de mensaje. 
 
 		MCU.flush();
 		Serial.flush();                    // Limpia el bufer serial
 	}
-	// Espera 1 segundo antes de volver a leer 
-	delay(1000);
+	// Espera 500ms antes de volver a leer 
+	delay(500);
 }
 
 /* Escrbir en formato NDEF. */

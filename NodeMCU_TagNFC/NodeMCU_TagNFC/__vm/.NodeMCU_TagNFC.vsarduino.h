@@ -77,5 +77,6 @@ typedef void *__builtin_va_list;
 #define pgm_read_ptr(address_short)   short()
 
 #include "NodeMCU_TagNFC.ino"
+#include "Procesar_datos_NodeMCU.ino"
 #endif
 #endif
