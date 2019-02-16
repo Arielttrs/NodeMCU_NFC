@@ -19,8 +19,8 @@
 // Copiar el objeto Serial a una variable relacionada con el dispositivo
 HardwareSerial &Pc = Serial;            // Para Debugg 
 
-										// Clases: 
-SoftwareSerial Node(4, 5); //Rx || Tx   // Puerto serie para node mcu 
+// Clases: 
+SoftwareSerial MCU(4, 5); //Rx || Tx   // Puerto serie para NodeMCU 
 PN532_I2C pn532_i2c(Wire);
 NfcAdapter nfc = NfcAdapter(pn532_i2c); // Pasa el argumento "interface (i2c o spi)" a la clase NfcAdapter. 
 LiquidCrystal_I2C lcd(0x3F, 16, 2);     // Entrega los argumentos: direcci�n y dimensiones a la funcion lcd.
@@ -31,7 +31,7 @@ void setup(void) {
 	//int ok;  // Varriable axuliaar para chequar estado. 
 
 	Pc.begin(115200);
-	Node.begin(9600);
+	MCU.begin(9600);
 	lcd.init();
 
 	my_lcd("Iniciando", 0, 0, false);
@@ -84,10 +84,12 @@ void read_ndef() {
 										   // Elimiar el debbug serial de tag.print
 
 		my_lcd(uiid, 0, 1, false);         // Mostrar UID en pantalla. 
-		Node.print(uiid);                  // Envia UID a Node MCU
-		Node.print("\n");
 
-		Node.flush();
+		/*Enviar Datos a NodeMCU*/
+		MCU.print(uiid);                   // Envia UID a Node MCU
+		MCU.print("\n");
+
+		MCU.flush();
 		Serial.flush();                    // Limpia el bufer serial
 	}
 	// Espera 1 segundo antes de volver a leer 
