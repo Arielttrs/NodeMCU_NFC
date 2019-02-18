@@ -21,6 +21,7 @@ HardwareSerial &Pc = Serial;            // Para Debugg
 
 // Clases: 
 SoftwareSerial MCU(4, 5); //Rx || Tx   // Puerto serie para NodeMCU 
+
 PN532_I2C pn532_i2c(Wire);
 NfcAdapter nfc = NfcAdapter(pn532_i2c); // Pasa el argumento "interface (i2c o spi)" a la clase NfcAdapter. 
 LiquidCrystal_I2C lcd(0x3F, 16, 2);     // Entrega los argumentos: direcci�n y dimensiones a la funcion lcd.
@@ -31,7 +32,7 @@ void setup(void) {
 	//int ok;  // Varriable axuliaar para chequar estado. 
 
 	Pc.begin(115200);       // Debugg
-	MCU.begin(9600);        // Puerto Virtual
+	MCU.begin(9600);        // Puerto Serial Virtual
 	lcd.init();             // Monitor LCD
 
 	my_lcd("Iniciando", 0, 0, false);

@@ -7,25 +7,17 @@
 
 /* Comunicación Serial entre ATmega328 y NodeMCU V1.0:
 *
-*  - Interpretación del UID
+*  - Interpretación del UID, se envia una cadena de 4 bytes correspondiente
+*    al UID de un Tag NFC.
 *  - Comunicación con base de datos (Post y Get).
 *  - Envio de respuestas al Atmega328
 */
 
 
-/*
-*
-*  COMNUNICACÓN SERIAL ENTRE ARDUINO UNO Y NODE MCU
-*  - Se envia una cadeda de 4 bytes correspondiente
-*    al UID de un Tag NFC.
-*
-*   ¡RECEPTOR!
-*  Fecha: 27/11/2018
-*/
 
 // Copia del Objeto Serial en variable adecuada al 
 // dispositivo con el que se comunica. 
-HardwareSerial &Atmega = Serial;   // Puerto Serial_1
+HardwareSerial &Atmega = Serial1;  // Puerto Serial_1
 
 								   /*
 								   //Puerto Serial Virtual:
@@ -36,24 +28,23 @@ HardwareSerial &Atmega = Serial;   // Puerto Serial_1
 								   // Configuracioón inicial: 
 void setup()
 {
-	// inicial puerto serial
-	Atmega.begin(38400);           // Comunicaciones
-    Serial1.begin(9600);            // Debugg.
-								   //Esperar un tiempo para reibir
-	delay(100);
+	// iniciar comunicación serial:
+	Atmega.begin(9600);           // Comunicaciones Micro-NodeMCU
+    Serial.begin(38400);            // Debugg NodeMCU
+	delay(100);			     	   // Esperar un tiempo para reibir
 }
 
 /*Recibir UID*/
-void UID()
+String uid_in()
 {
 	Serial.flush();
-	String uid = "";   // Guarda el UID
+	String uiid = "";              // Guarda el UID
 	if (Atmega.available())
 	{
-		char nul = Atmega.read();
-		while (nul != '\n')
-		{uid = uid + nul;
-		 nul = Atmega.read();}
+		char fin = Atmega.read();
+		while (fin != '\n')
+		{uiid = uiid + fin;
+		 fin = Atmega.read();}
 	}
 	else
 	{return;}
@@ -63,6 +54,11 @@ void UID()
 // Programa:
 void loop()
 {
+	String UID = uid_in();
+	//DEBUGG: 
+	Serial.print("UID entrante: \n");
+	Serial.print(UID);
+
 	/*Serial.flush();
 	// String recibido:
 	String dato = "";
