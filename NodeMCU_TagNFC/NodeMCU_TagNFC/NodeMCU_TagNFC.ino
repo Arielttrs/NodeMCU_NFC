@@ -87,7 +87,7 @@ void read_ndef() {
 		my_lcd(uiid, 0, 1, false);         // Mostrar UID en pantalla. 
 
 		/*Enviar Datos a NodeMCU*/
-		MCU.print(uiid);                   // Envia UID . 
+		MCU.print(uiid);                   // Envia UID en HEX.
 		MCU.print("\n");                   // Indicador de fin de mensaje. 
 
 		MCU.flush();

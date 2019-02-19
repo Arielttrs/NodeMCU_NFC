@@ -14,7 +14,6 @@
 */
 
 
-
 // Copia del Objeto Serial en variable adecuada al 
 // dispositivo con el que se comunica. 
 HardwareSerial &Atmega = Serial1;  // Puerto Serial_1
@@ -24,13 +23,12 @@ HardwareSerial &Atmega = Serial1;  // Puerto Serial_1
 								   #include<SoftwareSerial.h>         // Puerto serie virtual
 								   SoftwareSerial MCU(D6, D7);        // Rx || Tx.
 								   */
-
-								   // Configuracioón inicial: 
+// Configuracioón inicial: 
 void setup()
 {
 	// iniciar comunicación serial:
-	Atmega.begin(9600);           // Comunicaciones Micro-NodeMCU
-    Serial.begin(38400);            // Debugg NodeMCU
+	Atmega.begin(9600);            // Comunicaciones Micro-NodeMCU
+    Serial.begin(38400);           // Debugg NodeMCU
 	delay(100);			     	   // Esperar un tiempo para reibir
 }
 
@@ -41,13 +39,14 @@ String uid_in()
 	String uiid = "";              // Guarda el UID
 	if (Atmega.available())
 	{
+		Serial.println("Mensaje recibido!");
 		char fin = Atmega.read();
 		while (fin != '\n')
 		{uiid = uiid + fin;
 		 fin = Atmega.read();}
 	}
 	else
-	{return;}
+	{return "0";}
 }
 
 
@@ -56,7 +55,7 @@ void loop()
 {
 	String UID = uid_in();
 	//DEBUGG: 
-	Serial.print("UID entrante: \n");
+	Serial.print("UID: \n");
 	Serial.print(UID);
 
 	/*Serial.flush();
