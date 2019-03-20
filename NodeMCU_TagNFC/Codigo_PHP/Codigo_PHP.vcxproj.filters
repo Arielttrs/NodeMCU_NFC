@@ -15,7 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\..\..\wamp\www\Ejemplo1_BD\conect.php" />
-    <None Include="..\..\..\..\..\..\..\wamp\www\Ejemplo1_BD\insert.php" />
+    <None Include="..\..\..\..\..\..\..\wamp\www\Ejemplo1_BD\conect.php">
+      <Filter>Archivos de origen</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\..\wamp\www\Ejemplo1_BD\insert.php">
+      <Filter>Archivos de origen</Filter>
+    </None>
   </ItemGroup>
 </Project>
