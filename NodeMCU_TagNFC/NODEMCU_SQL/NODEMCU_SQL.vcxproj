@@ -111,8 +111,6 @@
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\..\..\wamp\www\Ejemplo1_BD\conect.php" />
-    <None Include="..\..\..\..\..\..\..\wamp\www\Ejemplo1_BD\insert.php" />
     <None Include="NODEMCU_SQL.ino">
       <FileType>CppCode</FileType>
     </None>
