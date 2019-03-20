@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="NODEMCU_SQL.ino" />
+    <None Include="..\..\..\..\..\..\..\wamp\www\Ejemplo1_BD\conect.php" />
+    <None Include="..\..\..\..\..\..\..\wamp\www\Ejemplo1_BD\insert.php" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.NODEMCU_SQL.vsarduino.h">
